@@ -1,0 +1,66 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "u7MOQY",
+    "name": "covid",
+    "comment": ""
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "KFYiOn"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "73RKkQ"
+          },
+          "activity": "${SendActivity_73RKkQ()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "tqdjHW"
+          },
+          "method": "GET",
+          "url": "https://api.covid19api.com/world/total",
+          "resultProperty": "dialog.api_response",
+          "responseType": "json"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "eZNW2p"
+          },
+          "condition": "=dialog.api_response.statuscode == 200",
+          "actions": [
+            {
+              "$kind": "Microsoft.SetProperty",
+              "$designer": {
+                "id": "b6Kmdo"
+              },
+              "property": "dialog.covid",
+              "value": "=dialog.api_response.content"
+            },
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "zX1I70"
+              },
+              "activity": "${SendActivity_zX1I70()}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "covid.lg",
+  "recognizer": "covid.lu.qna",
+  "id": "covid"
+}

@@ -1,0 +1,9 @@
+[import](common.lg)
+
+# SendActivity_Pe47Nr()
+[Activity
+    Text = ${SendActivity_Pe47Nr_text()}
+]
+
+# SendActivity_Pe47Nr_text()
+- Lets see the Latest Headlines in the World

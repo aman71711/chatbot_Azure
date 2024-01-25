@@ -1,0 +1,16 @@
+[import](common.lg)
+
+# SendActivity_73RKkQ()
+[Activity
+    Text = ${SendActivity_73RKkQ_text()}
+]
+
+# SendActivity_73RKkQ_text()
+- I can help you with that .
+# SendActivity_zX1I70()
+[Activity
+    Text = ${SendActivity_zX1I70_text()}
+]
+
+# SendActivity_zX1I70_text()
+- Total COVID-related Cases in world :- ${dialog.covid.TotalConfirmed}  And                 2)  Total COVID-related deaths in world :- ${dialog.covid.TotalDeaths}

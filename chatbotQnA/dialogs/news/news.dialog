@@ -1,0 +1,59 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "3exT4V",
+    "name": "news",
+    "comment": ""
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "1eRqS8"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "Pe47Nr"
+          },
+          "activity": "${SendActivity_Pe47Nr()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "a10A25"
+          },
+          "resultProperty": "dialog.api_response",
+          "method": "GET",
+          "url": "https://serpapi.com/search.json?q=PI&hl=en&gl=us&api_key=29cd7122b0346e5621f91de8d67c03373ec1702fcd85c3aae68249b3538e0873",
+          "responseType": "json"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "yftzqp"
+          },
+          "condition": "=dialog.api_response.statusCode == 200",
+          "actions": [
+            {
+              "$kind": "Microsoft.SetProperty",
+              "$designer": {
+                "id": "XHDnS2"
+              },
+              "property": "user.news",
+              "value": "=dialog.api_response.content"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "news.lg",
+  "recognizer": "news.lu.qna",
+  "id": "news"
+}

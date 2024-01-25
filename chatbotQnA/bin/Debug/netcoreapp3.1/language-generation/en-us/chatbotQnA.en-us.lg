@@ -1,0 +1,9 @@
+[import](common.lg)
+
+# SendActivity_Greeting()
+[Activity
+    Text = ${SendActivity_Greeting_text()}
+]
+
+# SendActivity_Greeting_text()
+- Hello! Welcome to the bot  . We can tell you . Type '1' for Covid Cases and Type '2' for Latest news
